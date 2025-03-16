@@ -1,0 +1,282 @@
+body {
+    background: linear-gradient(353deg, rgba(31,0,0,1) 0%, rgba(129,0,20,1) 25%, rgb(202, 2, 2) 50%, rgba(129,0,20,1) 75%, rgba(31,0,0,1) 100%);
+    padding-top: 50px;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    background-size: 30px 30px;
+    background-repeat: repeat;
+    background-position: center;
+    transform: rotate(353deg);
+    mix-blend-mode: soft-light;
+    opacity: 0.4;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 6px, transparent 1px);
+    pointer-events: none;
+    z-index: -1;
+    animation: moveDots 30s linear infinite;
+}
+
+@keyframes moveDots {
+    0% {
+        transform: rotate(353deg) translate(0, 0) rotate(45deg);
+    }
+    50% {
+        transform: rotate(353deg) translate(-30px, -30px) rotate(45deg);
+    }
+    100% {
+        transform: rotate(353deg) translate(0, 0) rotate(45deg);
+    }
+}
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.star {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  animation: sparkle 8s infinite;
+  mix-blend-mode: screen;
+}
+
+.star svg {
+  width: 100%;
+  height: 100%;
+  fill: gold;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1) rotate(90deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.5) rotate(270deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(360deg);
+  }
+}
+
+  
+  @keyframes sparkle {
+    0% {
+      transform: scale(0.5) rotate(0deg);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+      transform: scale(1) rotate(90deg);
+    }
+    70% {
+      opacity: 1;
+      transform: scale(1.2) rotate(270deg);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.5) rotate(360deg);
+    }
+  }
+  
+  
+
+/* Animazione: movimento leggero */
+@keyframes moveDots {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: -50px -50px;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+
+/* Animazione lenta e fluida dei puntini */
+@keyframes moveDots {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-50px, -50px) scale(1.05);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+  hr {
+    opacity: 0;
+  }
+  .navbar {
+    text-align: center;
+    margin-top: 18px;
+  }
+  .link-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0px 16px;
+  
+    .fallback {
+      font-size: 2.25em;
+      letter-spacing: 4px;
+      line-height: 0;
+      opacity: 0;
+      position: relative;
+      top: 15px;
+      left: 0;
+    }
+    .shape-wrapper { 
+      display: none; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    &:hover {
+      z-index: 9999;
+      .shape-wrapper { 
+        transform: rotate(-6deg);
+        display: block; 
+        .shape.cyan-fill {
+          transform: scale(3,.1);
+        }
+      }
+      .img-wrapper {
+        img {
+         animation: tiltBounce .15s ease;
+         animation-fill-mode: forwards;
+         display: block;
+          &.normal {
+             mix-blend-mode: darken;
+          }
+        }
+      }
+    }
+    &:nth-child(even) {
+      &:hover {
+        .shape-wrapper { transform: rotate(11deg) }
+        .img-wrapper img {
+           animation: tiltBounceAlt .15s ease;
+           animation-fill-mode: forwards;
+        }
+      }
+    }
+  }
+  
+  .img-wrapper {
+    img {
+      width: auto;
+      height: 40px;
+      display: block;
+      left: 0;
+      right: 0;
+      top: -5px;
+      margin: 0 auto;
+      position: absolute;
+      z-index: 999;
+      &.normal {
+        display: block;
+      }
+      &.active {
+        display: none;
+        z-index: -1;
+      }
+    }
+  }
+  .shape-wrapper {
+    filter: sepia(50%) saturate(3);
+    .shape {
+      transition: all .1s linear;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 35px;
+      overflow: hidden;
+      svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      &.cyan-fill {
+        mix-blend-mode: screen;
+        animation-delay: 0.05s;
+        animation-duration: .4s;
+      }
+      &.red-fill {
+        animation-duration: .45s;
+        animation-delay: 0.08s;
+        opacity: .8;
+      }
+    }
+  }
+  
+  
+  .jelly {
+    -webkit-animation-name: jelly;
+            animation-name: jelly;
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+  }
+  
+  @keyframes tiltBounce {
+    0% {
+      transform: scale(1) rotate(-7deg);
+    }
+    50% {
+      transform: scale(1.5) rotate(-7deg);
+    }
+    100% {
+      transform: scale(1.15) rotate(-7deg);
+    }
+  }
+  @keyframes tiltBounceAlt {
+    0% {
+      transform: scale(1) rotate(7deg);
+    }
+    50% {
+      transform: scale(1.5) rotate(7deg);
+    }
+    100% {
+      transform: scale(1.15) rotate(7deg);
+    }
+  }
+  @keyframes jelly {
+    0% {
+      width: 100%; transform: scale(1.25,1) skewX(20deg) translateY(3px) rotateX(40deg) rotateY(10deg) rotateZ(-10deg);
+    }
+    50% { width: 100%; transform: scale(1.25,1.1) skewX(-15deg) translateY(-2px) translateZ(-30px); }
+    100% { width: 100%; transform: scale(1.25,1) skewX(20deg) translateY(3px) rotateX(-40deg) rotateY(-10deg) rotateZ(-15deg); }
+  }
